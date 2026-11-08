@@ -18,4 +18,16 @@ buildscript {
     }
 }
 
+// Only the Latin OCR model; skip barcode + CJK/Devanagari models to keep the APK small.
+ext["react-native-vision-camera-mlkit"] = [
+  mlkit: [
+    textRecognition: true,
+    textRecognitionChinese: false,
+    textRecognitionDevanagari: false,
+    textRecognitionJapanese: false,
+    textRecognitionKorean: false,
+    barcodeScanning: false,
+  ]
+]
+
 apply plugin: "com.facebook.react.rootproject"
